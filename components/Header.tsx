@@ -1,9 +1,12 @@
+import { ArrowUpIcon } from "@heroicons/react/20/solid";
+import { BellIcon } from "@heroicons/react/20/solid";
+import Link from "next/link";
 function Header() {
   return (
     <header>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
-          src="https://yt3.ggpht.com/ytc/AKedOLTQVnvKbCa8nFzrm29ITxcyFqXvt78gV3VwvnJL=s900-c-k-c0x00ffffff-no-rj"
+          src="https://rare-gallery.com/uploads/posts/1151042-illustration-digital-art-black-background-pixel-art-3D-typography-movies-text-cube-pixels-brand-line-number-screenshot-computer-wallpaper-font-signage.jpg"
           width={100}
           height={100}
           className="cursor-pointer object-contain"
@@ -18,7 +21,18 @@ function Header() {
           <li className="headerLink">My Favourites</li>
         </ul>
       </div>
-      <div></div>
+      <div className="flex items-center space-x-4 text-sm font-light">
+        <ArrowUpIcon className="hidden h-6 w-6 sm:inline" />
+        <p className="hidden lg:inline">Kids</p>
+        <BellIcon className="hidden h-6 w-6 sm:inline" />
+        <Link href="/account">
+          <img
+            src="https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png"
+            className="cursor-pointer rounded h-6 w-6"
+            alt="Profile"
+          />
+        </Link>
+      </div>
     </header>
   );
 }
