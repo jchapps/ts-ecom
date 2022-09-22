@@ -16,7 +16,7 @@
 /*custom things*/
 @layer components {
   .headerLink {
-    @apply cursor-pointer text-sm font-light text-blue-300 transition duration-[.4s] hover:text-blue-700;
+    @apply cursor-pointer text-lg font-light text-white transition duration-[.4s] hover:text-blue-700;
   }
 
   .bannerButton {
