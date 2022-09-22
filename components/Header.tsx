@@ -1,9 +1,29 @@
 import { ArrowUpIcon } from "@heroicons/react/20/solid";
 import { BellIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+
 function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header>
+    <header className={`${isScrolled && "bg-[#000000]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
           src="https://rare-gallery.com/uploads/posts/1151042-illustration-digital-art-black-background-pixel-art-3D-typography-movies-text-cube-pixels-brand-line-number-screenshot-computer-wallpaper-font-signage.jpg"
