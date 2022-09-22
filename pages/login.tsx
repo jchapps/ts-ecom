@@ -92,10 +92,10 @@ function Login() {
         <div>
           <button
             type="submit"
-            className="flex text-white hover:underline align-c"
+            className="cursor-pointer text-white hover:underline hover:text-blue-500"
             onClick={() => setLogin(false)}
           >
-            Sign up
+            First time here? Sign up
           </button>
         </div>
       </form>
