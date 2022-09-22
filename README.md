@@ -1,7 +1,6 @@
 ![screenshot](./screenshots/screenshot.png)
 
-# 
-🎥 Blue Movies
+# 🎥 Blue Movies
 
 Web app built in Typescript/Next.js for you to watch your favourite movie trailers. Styled with Tailwind, UserAuths running on Firebase.
 
