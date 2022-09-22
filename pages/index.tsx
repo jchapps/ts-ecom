@@ -5,6 +5,7 @@ import Banner from "../components/Banner";
 import requests from "../utils/requests";
 import { Movie } from "../typings";
 import Row from "../components/Row";
+import useAuth from "../hooks/useAuth";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -27,10 +28,13 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
+  const { logout, loading } = useAuth();
+
+  if (loading) return null;
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
-        <title>Home</title>
+        <title>Blue Movies</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />

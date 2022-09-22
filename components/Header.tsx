@@ -2,9 +2,11 @@ import { ArrowUpIcon } from "@heroicons/react/20/solid";
 import { BellIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +49,7 @@ function Header() {
         <BellIcon className="hidden h-6 w-6 sm:inline" />
         <Link href="/account">
           <img
+            onClick={logout}
             src="https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png"
             className="cursor-pointer rounded h-10 w-10"
             alt="Profile"
