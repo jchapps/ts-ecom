@@ -26,9 +26,9 @@ function Header() {
     <header className={`${isScrolled && "bg-[#000000]"}`}>
       <div className="flex items-center space-x-2 md:space-x-10">
         <img
-          src="https://rare-gallery.com/uploads/posts/1151042-illustration-digital-art-black-background-pixel-art-3D-typography-movies-text-cube-pixels-brand-line-number-screenshot-computer-wallpaper-font-signage.jpg"
-          width={100}
-          height={100}
+          src="https://www.svgrepo.com/show/166681/movie.svg"
+          width={80}
+          height={80}
           className="cursor-pointer object-contain"
           alt="Movie Night"
         />
