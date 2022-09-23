@@ -77,7 +77,7 @@ function Modal() {
           />
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
-              <button className="flex items-center gap-x-2 rounded bg-blue-600 px-8 text-xl font-bold text-black transition hover:bg-blue-400">
+              <button className="flex items-center gap-x-2 rounded bg-blue-600 px-8 text-xl font-bold transition hover:bg-blue-400 text-white">
                 <PlayIcon className="h-7 w-7 text-white" /> Play
               </button>
 
