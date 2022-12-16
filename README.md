@@ -2,7 +2,8 @@
 
 # 🎥 Blue Movies
 
-Web app built in Typescript/Next.js for you to watch your favourite movie trailers. Styled with MUI and Tailwind, UserAuths running on Firebase.
+Watch your favourite movie trailers. Built in Next.js, Typescript, Stripe, Firebase, MUI and Tailwind.
+
 
 # Next.js + Tailwind CSS Example
 
