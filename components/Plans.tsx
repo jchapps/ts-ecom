@@ -1,9 +1,14 @@
 import { CheckIcon } from "@heroicons/react/20/solid";
+import { Product } from "@stripe/firestore-stripe-payments";
 import Head from "next/head";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
 
-const Plans = () => {
+interface Props {
+  products: Product[]
+}
+
+const Plans = ({products}: Props) => {
   const {logout} = useAuth()
 
   return (
@@ -39,9 +44,11 @@ const Plans = () => {
         </ul>
         <div className="mt-4 flex flex-col space-y-4">
           <div className="flex w-full items-center justify-center self-end md:w-3/5">
-            <div className="planBox">plan a</div>
-            <div className="planBox">plan b</div>
-            <div className="planBox">plan c</div>
+            {products.map((product) => (
+              <div className="planBox" key={product.id}>
+                {product.name}
+              </div>
+            ))}
           </div>
           {/* <Table/> */}
 
