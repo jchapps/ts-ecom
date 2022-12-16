@@ -49,9 +49,9 @@ function Header() {
           <a href="/login">Log In</a>
         </p>
         <BellIcon className="hidden h-6 w-6 sm:inline" />
-        <Link href="">
+        <Link href="/account">
           <img
-            //onClick={logout}
+            onClick={logout}
             src="https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png"
             className="cursor-pointer rounded h-10 w-10"
             alt="Profile"

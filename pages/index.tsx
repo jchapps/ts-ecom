@@ -3,6 +3,7 @@ import Image from "next/image";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
 import requests from "../utils/requests";
+import Plans from "../components/Plans";
 import { Movie } from "../typings";
 import Row from "../components/Row";
 import useAuth from "../hooks/useAuth";
@@ -31,10 +32,14 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
-  const { logout, loading } = useAuth();
+  const { loading } = useAuth();
   const showModal = useRecoilValue(modalState);
+  const subscription = false;
 
-  if (loading) return null;
+  if (loading || subscription === null) return null;
+
+  if (!subscription) return <Plans />;
+
   return (
     <div className="relative h-screen bg-gradient-to-b lg:h-[140vh]">
       <Head>
