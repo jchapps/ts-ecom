@@ -7,7 +7,8 @@ import useAuth from "../hooks/useAuth";
 import Table from "./Table";
 
 interface Props {
-  products: Product[]
+  products: Product[],
+  selectedPlan: Product
 }
 
 const Plans = ({products}: Props) => {
@@ -55,7 +56,7 @@ const Plans = ({products}: Props) => {
 
             ))}
           </div>
-          <Table products={products} />
+          <Table products={products} selectedPlan={selectedPlan}/>
 
           <button>Subcribe Now</button>
         </div>
