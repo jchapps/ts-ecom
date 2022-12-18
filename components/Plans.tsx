@@ -8,7 +8,6 @@ import Table from "./Table";
 
 interface Props {
   products: Product[],
-  selectedPlan: Product
 }
 
 const Plans = ({products}: Props) => {
@@ -33,7 +32,7 @@ const Plans = ({products}: Props) => {
         </Link>
         <button className="text-lg font-medium hover:underline" onClick={logout}>Sign Out</button>
       </header>
-      <main className="max-w-5xl pt-28 px-5 pb-12 transition-all md:px-10">
+      <main className="max-w-5xl  mx-auto pt-28 px-5 pb-12 transition-all md:px-10">
         <h1 className="mb-3 text-3xl font-medium">Select a plan</h1>
         <ul>
           <li className="plan-info">
