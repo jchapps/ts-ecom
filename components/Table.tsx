@@ -10,7 +10,7 @@ interface Props {
 function Table({ products, selectedPlan }: Props) {
   return (
     <table>
-      <tbody className="divide-y-3 divide-[gray]">
+      <tbody className="divide-y divide-[white]">
         <tr className="tableRow">
           <td className="tableDataTitle">Monthly Price</td>
           {products.map((product) => (
