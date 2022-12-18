@@ -4,6 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
+import Loader from "./Loader";
 import Table from "./Table";
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
 const Plans = ({products}: Props) => {
   const {logout} = useAuth()
   const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[1])
+  const [billingLoading, setBillingLoading] = useState(false)
 
   return (
     <>
@@ -57,7 +59,19 @@ const Plans = ({products}: Props) => {
           </div>
           <Table products={products} selectedPlan={selectedPlan}/>
 
-          <button>Subcribe Now</button>
+          <button
+            disabled={!selectedPlan || billingLoading}
+            className={`mx-auto w-11/12 rounded bg-blue-700 py-4 text-xl shadow hover:bg-blue-600 md:w-[420px] ${
+              billingLoading && 'opacity-60'
+            }`}
+            // onClick={subscribeToPlan}
+          >
+            {billingLoading ? (
+              <Loader colour="dark:fill-gray-300" />
+            ) : (
+              'Subscribe'
+            )}
+          </button>
         </div>
       </main>
     </>
