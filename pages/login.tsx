@@ -54,7 +54,7 @@ function Login() {
         onSubmit={handleSubmit(onSubmit)}
         className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6 md:mt-0 md:mx-w-md md:px-14"
       >
-        <h1 className="text-4xl text-semibold">Sign in</h1>
+        <h1 className="text-4xl text-semibold">Sign In</h1>
         <div className="space-y-4">
           <label className="inline-block w-full">
             <input
@@ -89,7 +89,7 @@ function Login() {
         >
           Sign In
         </button>
-        <div className="text-[gray]">
+        <div className="text-[gray] text-center">
           First time here?{' '}
           <button
             type="submit"
