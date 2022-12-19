@@ -22,7 +22,6 @@ import {
 import { db } from "../firebase";
 import useAuth from "../hooks/useAuth";
 import { toast, Toaster } from "react-hot-toast";
-import { TablePaginationActionsUnstyled } from "@mui/base";
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -33,6 +32,14 @@ function Modal() {
   const { user } = useAuth();
   const [addedToFavourites, setAddedToFavourites] = useState(false);
   const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
+
+
+  const toastStyle = {
+    fontSize: '14px',
+    padding: '12px',
+    borderRadius: '9999px',
+    maxWidth: '1000px',
+  }
 
   useEffect(() => {
     if (!movie) return;
@@ -91,7 +98,8 @@ function Modal() {
           movie?.title || movie?.original_name
         } has been removed from your favourites`,
         {
-          duration: 8000,
+          duration: 5000,
+          style: toastStyle
         }
       );
     } else {
@@ -107,7 +115,8 @@ function Modal() {
           movie?.title || movie?.original_name
         } has been added to your favourites.`,
         {
-          duration: 8000,
+          duration: 5000,
+          style: toastStyle
         }
       );
     }
