@@ -9,20 +9,20 @@ import Loader from "./Loader";
 import Table from "./Table";
 
 interface Props {
-  products: Product[],
+  products: Product[];
 }
 
-const Plans = ({products}: Props) => {
-  const {logout, user} = useAuth()
-  const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[1])
-  const [billingLoading, setBillingLoading] = useState(false)
+const Plans = ({ products }: Props) => {
+  const { logout, user } = useAuth();
+  const [selectedPlan, setSelectedPlan] = useState<Product | null>(products[1]);
+  const [billingLoading, setBillingLoading] = useState(false);
 
   const subscribeToPlan = () => {
-    if (!user) return
+    if (!user) return;
 
-    loadCheckout(selectedPlan?.prices[0].id!)
-    setBillingLoading(true)
-  }
+    loadCheckout(selectedPlan?.prices[0].id!);
+    setBillingLoading(true);
+  };
 
   return (
     <>
@@ -40,45 +40,50 @@ const Plans = ({products}: Props) => {
             alt="Movie Night"
           />
         </Link>
-        <button className="text-lg font-medium hover:underline" onClick={logout}>Sign Out</button>
+        <button
+          className="text-lg font-medium hover:underline"
+          onClick={logout}
+        >
+          Sign Out
+        </button>
       </header>
       <main className="max-w-5xl  mx-auto pt-28 px-5 pb-12 transition-all md:px-10">
-        <h1 className="mb-3 text-3xl font-medium">Select a plan</h1>
-        <ul>
-          <li className="plan-info">
-            <CheckIcon className="check" /> Unlimited Viewing.
-          </li>
-          <li className="plan-info">
-            <CheckIcon className="check" /> Original Content.
-          </li>
-          <li className="plan-info">
-            <CheckIcon className="check" /> Cancel Anytime.
-          </li>
-        </ul>
-        <div className="mt-4 flex flex-col space-y-4">
+        <h1 className="mb-3 text-3xl font-medium text-center">Select a plan</h1>
+        <div className="flex justify-around">
+            <li className="plan-info">
+              <CheckIcon className="check" /> Unlimited Viewing
+            </li>
+            <li className="plan-info">
+              <CheckIcon className="check" /> Original Content
+            </li>
+            <li className="plan-info">
+              <CheckIcon className="check" /> Cancel Anytime
+            </li>
+        </div>
+        <div className="mt-9 flex flex-col space-y-4">
           <div className="flex w-full items-center justify-center self-end md:w-3/5">
             {products.map((product) => (
-              <div className={`planBox ${selectedPlan?.id === product.id ? "opacity-100" : "opacity-60"}`} key={product.id} onClick={() => setSelectedPlan(product)}>
+              <div
+                className={`planBox ${
+                  selectedPlan?.id === product.id ? "opacity-100" : "opacity-60"
+                }`}
+                key={product.id}
+                onClick={() => setSelectedPlan(product)}
+              >
                 {product.name}
-
               </div>
-
             ))}
           </div>
-          <Table products={products} selectedPlan={selectedPlan}/>
+          <Table products={products} selectedPlan={selectedPlan} />
 
           <button
             disabled={!selectedPlan || billingLoading}
             className={`mx-auto w-11/12 rounded bg-blue-700 py-4 text-xl shadow hover:bg-blue-600 md:w-[420px] ${
-              billingLoading && 'opacity-60'
+              billingLoading && "opacity-60"
             }`}
             onClick={subscribeToPlan}
           >
-            {billingLoading ? (
-              <Loader />
-            ) : (
-              'Subscribe'
-            )}
+            {billingLoading ? <Loader /> : "Subscribe"}
           </button>
         </div>
       </main>
