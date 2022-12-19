@@ -39,10 +39,7 @@ function Header() {
         <DropdownMenu/>
 
         <ul className="hidden space-x-4 md:flex">
-          <li className="headerLink">Home</li>
-          <li className="headerLink">TV</li>
-          <li className="headerLink">Movies</li>
-          <li className="headerLink">Popular</li>
+          <li className="headerLink">Trailers</li>
           <li className="headerLink">My Favourites</li>
         </ul>
       </div>

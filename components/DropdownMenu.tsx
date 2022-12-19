@@ -16,7 +16,7 @@ export default function BasicMenu() {
   }
 
   return (
-    <div className="md:!hidden">
+    <div className="headerLink md:!hidden">
       <Button
         id="basic-button"
         aria-controls={open ? 'basic-menu' : undefined}
@@ -32,7 +32,7 @@ export default function BasicMenu() {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        className="menu"
+        className="headerLink"
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}

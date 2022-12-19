@@ -1,7 +1,7 @@
 import MuiModal from "@mui/material/Modal";
 import { modalState, movieState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
-import { XMarkIcon } from "@heroicons/react/20/solid";
+import { CheckIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import { PlayIcon } from "@heroicons/react/20/solid";
 import { PlusIcon } from "@heroicons/react/20/solid";
 import { HandThumbUpIcon } from "@heroicons/react/20/solid";
@@ -11,6 +11,9 @@ import { Movie } from "../typings";
 import { useEffect, useState } from "react";
 import { Element, Genre } from "../typings";
 import ReactPlayer from "react-player/lazy";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
+import useAuth from "../hooks/useAuth";
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -18,6 +21,9 @@ function Modal() {
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>();
   const [muted, setMuted] = useState(false);
+  const {user} = useAuth()
+  const [addedToFavourites, setAddedToFavourites] = useState(false);
+
 
   useEffect(() => {
     if (!movie) return;
@@ -46,11 +52,15 @@ function Modal() {
     fetchMovie();
   }, [movie]);
 
+  const handleFavourite = async () => {
+    if (addedToFavourites) {
+      await deleteDoc(doc(db, "customers", user!.uid, "myList", movie?.id.toString()!))
+    }
+  }
+
   const handleClose = () => {
     setShowModal(false);
   };
-
-  console.log(trailer);
 
   return (
     <MuiModal
@@ -81,8 +91,12 @@ function Modal() {
                 <PlayIcon className="h-7 w-7 text-white" /> Play
               </button>
 
-              <button className="modalButton">
-                <PlusIcon className="h-7 w-7 " />
+              <button className="modalButton" onClick={handleFavourite}>
+                {addedToFavourites ? (
+                  <CheckIcon className="h-7 w-7 " />
+                ) : (
+                  <PlusIcon className="h-7 w-7 " />
+                )}
               </button>
 
               <button className="modalButton">
