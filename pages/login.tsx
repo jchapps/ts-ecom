@@ -89,13 +89,14 @@ function Login() {
         >
           Sign In
         </button>
-        <div>
+        <div className="text-[gray]">
+          First time here?{' '}
           <button
             type="submit"
             className="cursor-pointer text-white hover:underline hover:text-blue-500"
             onClick={() => setLogin(false)}
           >
-            First time here? Sign up
+            Sign up
           </button>
         </div>
       </form>

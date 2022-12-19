@@ -36,19 +36,19 @@ function Header() {
           alt="Movie Night"
         />
 
-        <DropdownMenu />
+        {/* <DropdownMenu /> */}
 
         <ul className="hidden space-x-4 md:flex">
           <Link href="/">
             <li className="headerLink">Trailers</li>
           </Link>
-          <li className="headerLink">My Favourites</li>
+          {/* <li className="headerLink">My Favourites</li> */}
         </ul>
       </div>
       <div className="flex items-center space-x-4 text-md font-light">
         <Link href="/account">
           <p className="col-span-3 cursor-pointer hover:underline">
-            My Account
+            Account
           </p>
         </Link>
         <Link href="/login">

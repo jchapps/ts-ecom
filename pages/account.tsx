@@ -3,6 +3,7 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
+import Header from "../components/Header";
 import Membership from "../components/Membership";
 import useAuth from "../hooks/useAuth";
 import useSubscription from "../hooks/useSubscription";
@@ -22,26 +23,10 @@ function account({ products }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={`bg-blue-500`}>
-        <Link href="/">
-          <img
-            src="https://www.svgrepo.com/show/166681/movie.svg"
-            width={70}
-            height={70}
-            className="cursor-pointer object-contain"
-          />
-        </Link>
-        <Link href="/account">
-          <img
-            src="https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png"
-            alt="accountlogo"
-            className="cursor-pointer rounded h-10 w-10"
-          />
-        </Link>
-      </header>
+      <Header />
 
       <main className="pt-32 mx-auto max-w-6xl px-5 pb-12 transition-all md:px-10">
-        <div className="flex flex-col gap-x-4 md:flex-row md:items-center">
+        <div className="flex flex-col gap-x-4 justify-between md:flex-row md:items-center">
           <h1 className="text-3xl md:text-4xl">Account</h1>
           <div className="-ml-0.5 flex items-center gap-x-1.5">
             <img
@@ -57,7 +42,7 @@ function account({ products }: Props) {
           </div>
         </div>
 
-        <Membership/>
+        <Membership />
 
         <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0 md:pb-0">
           <h4 className="text-lg text-[gray]">Plan Details:</h4>
@@ -69,9 +54,7 @@ function account({ products }: Props) {
               )[0]?.name
             }
           </div>
-          <p
-            className="cursor-pointer text-blue-500 hover:underline md:text-right"
-          >
+          <p className="cursor-pointer text-blue-500 hover:underline md:text-right">
             Change plan
           </p>
         </div>
