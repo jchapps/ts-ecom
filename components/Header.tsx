@@ -46,14 +46,22 @@ function Header() {
         </ul>
       </div>
       <div className="flex items-center space-x-4 text-md font-light">
-        <ArrowUpIcon className="hidden h-6 w-6 sm:inline" />
-        <p className="hidden lg:inline">
-          <a href="/login">Log In</a>
-        </p>
+        <Link href="/account">
+          <p className="col-span-3 cursor-pointer hover:underline">
+            My Account
+          </p>
+        </Link>
+        <Link href="/login">
+          <p
+            className="col-span-3 cursor-pointer hover:underline"
+            onClick={logout}
+          >
+            Logout
+          </p>
+        </Link>
         <BellIcon className="hidden h-6 w-6 sm:inline" />
         <Link href="/account">
           <img
-            onClick={logout}
             src="https://www.shareicon.net/data/512x512/2016/09/15/829453_user_512x512.png"
             className="cursor-pointer rounded h-10 w-10"
             alt="Profile"
