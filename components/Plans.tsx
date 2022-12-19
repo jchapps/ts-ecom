@@ -51,7 +51,7 @@ const Plans = ({ products }: Props) => {
         <h1 className="mb-3 text-3xl font-medium text-center">Select a plan</h1>
         <div className="flex justify-around">
             <li className="plan-info">
-              <CheckIcon className="check" /> Unlimited Viewing
+              <CheckIcon className="check" /> Live Chat Support
             </li>
             <li className="plan-info">
               <CheckIcon className="check" /> Original Content

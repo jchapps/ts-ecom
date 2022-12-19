@@ -15,7 +15,7 @@ function Table({ products, selectedPlan }: Props) {
           <td className="tableDataTitle">Monthly Price</td>
           {products.map((product) => (
             <td className={`tableData ${selectedPlan?.id === product.id ? "text-white" : "text-gray-500"}`} key={product.id}   >
-              {product.prices[0].unit_amount}
+              {product.prices[0].unit_amount} ¥
             </td>
           ))}
         </tr>{" "}
