@@ -28,18 +28,17 @@ function Modal() {
   const [movie, setMovie] = useRecoilState(movieState);
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>();
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
   const { user } = useAuth();
   const [addedToFavourites, setAddedToFavourites] = useState(false);
   const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
 
-
   const toastStyle = {
-    fontSize: '14px',
-    padding: '12px',
-    borderRadius: '9999px',
-    maxWidth: '1000px',
-  }
+    fontSize: "14px",
+    padding: "12px",
+    borderRadius: "9999px",
+    maxWidth: "1000px",
+  };
 
   useEffect(() => {
     if (!movie) return;
@@ -99,7 +98,7 @@ function Modal() {
         } has been removed from your favourites`,
         {
           duration: 5000,
-          style: toastStyle
+          style: toastStyle,
         }
       );
     } else {
@@ -116,7 +115,7 @@ function Modal() {
         } has been added to your favourites.`,
         {
           duration: 5000,
-          style: toastStyle
+          style: toastStyle,
         }
       );
     }
@@ -152,10 +151,6 @@ function Modal() {
           />
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
-              <button className="flex items-center gap-x-2 rounded bg-blue-600 px-8 text-xl font-bold transition hover:bg-blue-400 text-white">
-                <PlayIcon className="h-7 w-7 text-white" /> Play
-              </button>
-
               <button className="modalButton" onClick={handleFavourite}>
                 {addedToFavourites ? (
                   <CheckIcon className="h-7 w-7 " />
