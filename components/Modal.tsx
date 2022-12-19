@@ -11,9 +11,18 @@ import { Movie } from "../typings";
 import { useEffect, useState } from "react";
 import { Element, Genre } from "../typings";
 import ReactPlayer from "react-player/lazy";
-import { deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  DocumentData,
+  onSnapshot,
+  setDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import useAuth from "../hooks/useAuth";
+import { toast, Toaster } from "react-hot-toast";
+import { TablePaginationActionsUnstyled } from "@mui/base";
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -21,9 +30,9 @@ function Modal() {
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>();
   const [muted, setMuted] = useState(false);
-  const {user} = useAuth()
+  const { user } = useAuth();
   const [addedToFavourites, setAddedToFavourites] = useState(false);
-
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([]);
 
   useEffect(() => {
     if (!movie) return;
@@ -52,11 +61,57 @@ function Modal() {
     fetchMovie();
   }, [movie]);
 
+  // Find movies in user's favourites
+  useEffect(() => {
+    if (user) {
+      return onSnapshot(
+        collection(db, "customers", user.uid, "myList"),
+        (snapshot) => setMovies(snapshot.docs)
+      );
+    }
+  }, [db, movie?.id]);
+
+  // Checking if the movie is already in favourites -- true = !== -1
+  useEffect(
+    () =>
+      setAddedToFavourites(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+      ),
+    [movies]
+  );
+
   const handleFavourite = async () => {
     if (addedToFavourites) {
-      await deleteDoc(doc(db, "customers", user!.uid, "myList", movie?.id.toString()!))
+      await deleteDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!)
+      );
+
+      toast(
+        `${
+          movie?.title || movie?.original_name
+        } has been removed from your favourites`,
+        {
+          duration: 8000,
+        }
+      );
+    } else {
+      await setDoc(
+        doc(db, "customers", user!.uid, "myList", movie?.id.toString()!),
+        {
+          ...movie,
+        }
+      );
+
+      toast(
+        `${
+          movie?.title || movie?.original_name
+        } has been added to your favourites.`,
+        {
+          duration: 8000,
+        }
+      );
     }
-  }
+  };
 
   const handleClose = () => {
     setShowModal(false);
@@ -69,6 +124,7 @@ function Modal() {
       className="fixed !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide "
     >
       <>
+        <Toaster position="bottom-center" />
         <button
           onClick={handleClose}
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-blue-600"
