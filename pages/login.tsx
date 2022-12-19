@@ -59,7 +59,7 @@ function Login() {
           <label className="inline-block w-full">
             <input
               type="email"
-              placeholder="email"
+              placeholder="Email"
               className="input"
               {...register("email", { required: true })}
             />
@@ -72,7 +72,7 @@ function Login() {
           <label className="inline-block w-full">
             <input
               type="password"
-              placeholder="password"
+              placeholder="Password"
               className="input"
               {...register("password", { required: true })}
             />

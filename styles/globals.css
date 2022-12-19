@@ -28,7 +28,7 @@
   }
 
   .input {
-    @apply w-full rounded bg-blue-100 px-5 py-3.5 placeholder-blue-200 outline-none focus:bg-blue-200;
+    @apply w-full rounded bg-blue-100 px-5 py-3.5 placeholder-blue-400 outline-none focus:bg-blue-200;
   }
 
   .modalButton {
