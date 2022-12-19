@@ -3,6 +3,7 @@ import { BellIcon } from "@heroicons/react/20/solid";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import DropdownMenu from "./DropdownMenu";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,6 +35,8 @@ function Header() {
           className="cursor-pointer object-contain"
           alt="Movie Night"
         />
+
+        <DropdownMenu/>
 
         <ul className="hidden space-x-4 md:flex">
           <li className="headerLink">Home</li>

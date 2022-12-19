@@ -22,7 +22,7 @@ function account({ products }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className={`bg-blue-400`}>
+      <header className={`bg-blue-500`}>
         <Link href="/">
           <img
             src="https://www.svgrepo.com/show/166681/movie.svg"

@@ -23,7 +23,7 @@ function Membership() {
         Membership and Billing
         <button
           disabled={isBillingLoading || !subscription}
-          className="h-10 w-3/5 whitespace-nowrap bg-red-600 py-2 text-sm font-medium text-black shadow-md hover:bg-red-700 md:w-4/5"
+          className="h-10 w-3/5 whitespace-nowrap bg-blue-600 py-2 text-sm font-medium text-black shadow-md hover:bg-blue-900 md:w-4/5"
           onClick={manageSubscription}
         >
           {isBillingLoading ? <Loader /> : "Modify Plan"}
