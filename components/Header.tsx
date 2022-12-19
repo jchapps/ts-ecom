@@ -36,13 +36,12 @@ function Header() {
           alt="Movie Night"
         />
 
-        <DropdownMenu/>
+        <DropdownMenu />
 
         <ul className="hidden space-x-4 md:flex">
           <Link href="/">
             <li className="headerLink">Trailers</li>
           </Link>
-
           <li className="headerLink">My Favourites</li>
         </ul>
       </div>

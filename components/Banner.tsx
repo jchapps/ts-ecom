@@ -3,7 +3,6 @@ import { Movie } from "../typings";
 import { baseUrl } from "../constants/Movie";
 import Image from "next/image";
 import { FilmIcon } from "@heroicons/react/20/solid";
-import { InformationCircleIcon } from "@heroicons/react/20/solid";
 import { modalState, movieState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
 
