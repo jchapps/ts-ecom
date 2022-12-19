@@ -151,6 +151,9 @@ function Modal() {
           />
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
+              {/* <button className="flex items-center gap-x-2 rounded bg-blue-600 px-8 text-xl font-bold transition hover:bg-blue-400 text-white">
+                <PlayIcon className="h-7 w-7 text-white" /> Play
+              </button> */}
               <button className="modalButton" onClick={handleFavourite}>
                 {addedToFavourites ? (
                   <CheckIcon className="h-7 w-7 " />
@@ -158,10 +161,10 @@ function Modal() {
                   <PlusIcon className="h-7 w-7 " />
                 )}
               </button>
-
+              {/*
               <button className="modalButton">
                 <HandThumbUpIcon className="h-7 w-7 " />
-              </button>
+              </button> */}
             </div>
             <button className="modalButton" onClick={() => setMuted(!muted)}>
               {muted ? (
