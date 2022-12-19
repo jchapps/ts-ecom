@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import useSubscription from "../hooks/useSubscription";
@@ -8,6 +9,8 @@ function Membership() {
   const { user } = useAuth();
   const subscription = useSubscription(user);
   const [isBillingLoading, setBillingLoading] = useState(false);
+  const cancDate = subscription?.cancel_at_period_end
+  const payDate = subscription?.current_period_end
 
   const manageSubscription = () => {
     if (subscription) {
@@ -44,10 +47,10 @@ function Membership() {
         <div className="flex flex-col justify-between pt-4 pb-4 md:flex-row md:pb-0">
           <div>
             <p>
-              {subscription?.cancel_at_period_end
+              {cancDate
                 ? "Your membership will end on "
                 : "Your next billing date is "}
-              {subscription?.current_period_end}
+              {moment(payDate).format("MMM Do YYYY")}
             </p>
           </div>
           <div className="md:text-right">

@@ -1,4 +1,5 @@
 import { getProducts, Product } from "@stripe/firestore-stripe-payments";
+import moment from "moment";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -16,6 +17,8 @@ interface Props {
 function account({ products }: Props) {
   const { user, logout } = useAuth();
   const subscription = useSubscription(user);
+  const subDate = subscription?.created
+
   return (
     <div>
       <Head>
@@ -36,7 +39,7 @@ function account({ products }: Props) {
             />
             <div>
               <p className="text-xs font-semibold">
-                Member Since: {subscription?.created}
+                Member Since: {moment(subDate).format("MMM Do YYYY")}
               </p>
             </div>
           </div>
